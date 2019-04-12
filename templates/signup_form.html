@@ -2,13 +2,14 @@
 
 {% block content %}
 
+<div>
 <form method="post" action='/'>
     <label for='username'>Username
         <input type='text' name='username' value="{{username}}" />
     </label>
     <p class="error">{{username_error}}</p>
     <label for='email'>Email (optional)
-        <input type="text" name="email" value="{{email}}" />
+        <input  type="text" name="email" value="{{email}}" />
     </label>
     <p class="error">{{email_error}}</p>
     <label for='password'>Password
@@ -21,5 +22,5 @@
     <p class="error">{{verify_password_error}}</p>
     <input type="submit" name="Submit" />
 </form>
-
+</div>
 {% endblock %}
