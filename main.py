@@ -11,6 +11,7 @@ def index():
 
 @app.route("/", methods=["POST"])
 def user_validate():
+    #validate username to meet criteria
     username = request.form['username']
     username_error = ''
     if len(username) >= 3 and len(username) <= 20:
@@ -22,6 +23,7 @@ def user_validate():
         username_error = 'Username must be between 3-20 characters'
         username = ''
     
+    #validate password to meet criteria
     password = request.form['password']
     password_error = ''
     if len(password) >=3 and len(password) <=20:
@@ -33,22 +35,35 @@ def user_validate():
         password_error = 'Password must be between at least 6 characters'
         password = ''
     
+    #double check verify password that it matches passwordS
     verify_password = request.form['verify_password']
     verify_password_error = ''
     if password != verify_password:
         verify_password_error = 'Passwords do not match'
         password = ''
     
+    #validate email to meet citeria
+    email = request.form['email']
+    email_error = ''
+
+    #use regular expression to validate email
+    valid_email = re.compile(r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9.])' )
     
+    if not valid_email.match(email):
+        email_error = 'Please enter a valid email'
+        email = ''
+    
+
+
     return render_template('signup_form.html',username=username, 
                                 username_error=username_error,
                                 password=password, 
                                 password_error=password_error,
                                 verify_password=verify_password,
-                                verify_password_error=verify_password_error
+                                verify_password_error=verify_password_error,
+                                email=email, email_error=email_error
                                 )
         
-def email_validate():
-    email = request.form['email']
+
     
 app.run()
