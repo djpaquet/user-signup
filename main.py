@@ -32,7 +32,7 @@ def user_validate():
                 password_error = 'Please enter a valid Password that has no spaces'
                 password = ''
     elif len(password) < 3 or len(password) > 20:
-        password_error = 'Password must be between at least 6 characters'
+        password_error = 'Password must be at least 6 characters'
         password = ''
     
     #double check verify password that it matches passwordS
@@ -53,7 +53,9 @@ def user_validate():
         email_error = 'Please enter a valid email'
         email = ''
     
-
+    if not username_error and not email_error:
+            if not password_error and not verify_password_error:
+                return render_template('welcome.html', username=username)
 
     return render_template('signup_form.html',username=username, 
                                 username_error=username_error,
@@ -65,5 +67,9 @@ def user_validate():
                                 )
         
 
+#@app.route('/hello')
+#def hello():
     
+
+
 app.run()

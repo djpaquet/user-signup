@@ -3,14 +3,23 @@
 <html>
     <head>
         <title>Signup</title>
+        <style>
 
-        <link href="style.css" type="text/css" rel="stylesheet" />
+        .error{
+            color:#f90c18 ;
+        }
+        input{
+            background-color: #eff2f4;
+        }
+        </style>
         
     </head>
-    <header>Signup</header>
+    
     <body>
-
-        {% block content %}
-        {% endblock %}
+        <h1>Signup</h1>
+        <div>
+            {% block content %}
+            {% endblock %}
+        </div>
     </body>
 </html>
