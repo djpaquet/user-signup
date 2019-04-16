@@ -55,7 +55,7 @@ def user_validate():
     
     if not username_error and not email_error:
             if not password_error and not verify_password_error:
-                return render_template('welcome.html', username=username)
+                return redirect('/hello?username={0}'.format(username))
 
     return render_template('signup_form.html',username=username, 
                                 username_error=username_error,
@@ -67,8 +67,10 @@ def user_validate():
                                 )
         
 
-#@app.route('/hello')
-#def hello():
+@app.route('/hello')
+def hello():
+    username = request.args.get('username')
+    return render_template('welcome.html', username=username)
     
 
 
