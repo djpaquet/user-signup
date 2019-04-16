@@ -49,7 +49,10 @@ def user_validate():
     #use regular expression to validate email
     valid_email = re.compile(r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9.])' )
     
-    if not valid_email.match(email):
+    if email =='':
+        email=''
+
+    elif not valid_email.match(email):
         email_error = 'Please enter a valid email'
         email = ''
     
